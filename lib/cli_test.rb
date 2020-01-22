@@ -1,4 +1,5 @@
 require "tty-prompt"
+require "pry"
 
 class Test
 
@@ -27,12 +28,15 @@ end
 
 
 
+def self.find_location(location)
+    self.where(location: location)
+end
 
 def bike_selection
     prompt = TTY::Prompt.new
-
+    
     prompt.select("Select location of bike") do |menu|
-        menu.choice "Bronx", -> {puts Bike.where(location: "Bronx"), color_selection}
+        menu.choice "Bronx", -> {@array = Bike.find_location("Bronx"), color_selection}
         # menu.choice "Queens", -> {@location_array = Bike.all.select{|bikes| bikes.location = "Queens"}, color_selection}
         # menu.choice "Brooklyn", -> {@location_array = Bike.all.select{|bikes| bikes.location = "Brooklyn"}, color_selection}
         # menu.choice "Manhattan", -> {@location_array = Bike.all.select{|bikes| bikes.location = "Manhattan"}, color_selection}
@@ -43,7 +47,8 @@ end
 def color_selection
     prompt = TTY::Prompt.new
     prompt.select("Select color of bike") do |menu|
-        menu.choice "Red", -> {Bike.where(location: "Bronx").where(color: "Red")}
+
+        menu.choice "Red", -> {}
         menu.choice "Blue", -> {}
         menu.choice "Yellow", -> {}
         menu.choice "Black", -> {}
@@ -52,7 +57,16 @@ def color_selection
     end
 end
 
-def build_bike
-     puts bike_hash = {color: @selection[1], location: @selection[0], price: @price}
-end
+
+
+
+
+
+
+# def build_bike
+#      puts bike_hash = {color: @selection[1], location: @selection[0], price: @price}
+# end
+# end
+
+#binding.pry
 end
