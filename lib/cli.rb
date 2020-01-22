@@ -36,19 +36,17 @@ class CLI
 
     def find_user
         if user_valid?
-            # @user_inst =
-             User.all.find_by(name: @user_name) 
+            @user_inst = User.all.find_by(name: @user_name) 
         else
-            User.create(name: @user_name)
+            @user_inst = User.create(name: @user_name)
         end
     end
 
     
 
     def appointment_valid?
-        if Appointment.where("user = ?", @user_name)
+        if Appointment.find(@user_inst.id)
             true
-            binding.pry
         else
             false
         end
@@ -56,23 +54,20 @@ class CLI
 
     def find_appointment
         if appointment_valid?
-            desired_appointment = Appointment.find_by(user: @user_name)
-            puts "The appointment for blah"
+            desired_appointment = Appointment.find(@user_inst.id)
+            puts "\n The appointment for #{desired_appointment.user.name.capitalize} is at #{desired_appointment.time} on #{desired_appointment.date}"
         else
-            puts "You have no appointments. Would you like to make one?"
-        #     puts "Would you like to create an appointment? Y/N"
-        #         answer = gets.chomp
-        #         if Y 
-        #         "Please enter date in MM/DD/YYYY format"
-        #         date = gets.chomp
-        #         "Please enter time for your appointment (12-hour format)"
-        #         time = gets.chomp
-        #         "Pick bike color"
-        #         list of bikes/color
-        #         else 
-        #         "Thank you have a nice day"
-        #         end
-        #     Appointment.create(time: "1021",user_id: find_user.id, bike_id: 1 )
+            puts "\n You have no appointments. Would you like to make one? (Y/N)"
+                answer = gets.chomp
+                if answer.undercase = "y"
+                puts "Please enter date in MM/DD/YYYY format"
+                date = gets.chomp
+                "Please enter time for your appointment (12-hour format)"
+                time = gets.chomp
+                "Pick bike color"
+                list of bikes/color
+                Appointment.create(date: date, time: time, user_id: @user_inst.id, bike_id: 1 )
+                end
         end
     end
 
@@ -82,11 +77,28 @@ class CLI
         welcome
         puts "Hello #{@user_name.capitalize}!"
         prompt.select("What would you like to do today?") do |menu|
-            menu.choice "make an appointment"
+            menu.choice "make an appointment", -> {bike_selection}
             menu.choice "check an appointment", -> {find_appointment}
             menu.choice "update an appointment"
             menu.choice "delete an appointment"
         end
+
+    end
+
+    def bike_selection
+        prompt = TTY::Prompt.new
+
+        prompt.select("Select color of bike") do |menu|
+            menu.choice "Bronx", -> {@location = "Bronx", color_selection}
+            menu.choice "Queens", -> {}
+            menu.choice "Brooklyn", -> {}
+            menu.choice "Manhattan", -> {}
+            menu.choice "Staten Island", -> {}
+        end
+    end
+
+    def build_bike
+        @location
 
     end
 
