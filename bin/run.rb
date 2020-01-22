@@ -2,5 +2,10 @@ require_relative '../config/environment'
 
 
 
-cli = Cli.new
- cli.welcome
+
+cli = CLI.new
+ cli.run
+
+
+# blah = Test.new
+# blah.menu
