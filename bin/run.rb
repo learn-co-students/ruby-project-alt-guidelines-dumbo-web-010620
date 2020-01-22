@@ -1,12 +1,13 @@
 require_relative '../config/environment'
 
+#this runs my app
 cli = Interface.new
-user_object = cli.welcome
+cli.run
 
-if !user_object
-    cli.welcome
-    question_one
-end
+# if !user_object
+#     cli.welcome
+#     question_one
+# end
 
 
 
