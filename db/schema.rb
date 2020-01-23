@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_22_171136) do
+ActiveRecord::Schema.define(version: 2020_01_23_164802) do
 
-  create_table "questions", force: :cascade do |t|
-    t.string "inquiry"
-    t.string "answer"
+  create_table "products", force: :cascade do |t|
+    t.string "product_type"
+    t.integer "price"
   end
 
-  create_table "user_questions", force: :cascade do |t|
+  create_table "purchases", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "question_id"
-    t.boolean "correct?"
+    t.integer "product_id"
+    t.boolean "purchase?"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.integer "points"
   end
 
 end
