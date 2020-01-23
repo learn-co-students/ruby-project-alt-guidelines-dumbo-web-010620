@@ -76,7 +76,7 @@ _**You do not need to have your MVP figured out before your pitch.**_ We will he
 
 #### Setup
 
-Fork and clone this project repository. As you work, be sure to create a flow of:
+<!-- Fork and clone this project repository. As you work, be sure to create a flow of:
 
 * creating a branch to work on a new feature,
 * committing and pushing to your branch,
@@ -104,9 +104,9 @@ This should take approximately **3/4 of a day**.
 
 Make a new file for each model in your `lib` folder. What's the naming convention for a model filename? Check out previous labs for a reminder. Remember that `activerecord` gem from our `Gemfile`? Make sure that every model inherits from `ActiveRecord::Base`.
 
-Be sure to include the relationships between your models. The [Rails Guides ActiveRecord Documentation](http://guides.rubyonrails.org/association_basics.html) is a great source if you get stuck! Check out the `has_many :through` section when setting up your many-to-many relationship.
+Be sure to include the relationships between your models. The [Rails Guides ActiveRecord Documentation](http://guides.rubyonrails.org/association_basics.html) is a great source if you get stuck! Check out the `has_many :through` section when setting up your many-to-many relationship. -->
 
-#### Migrations
+<!-- #### Migrations
 
 Create your database and migrations in the terminal (keeping in mind that you have Rake available to you! Run `rake -T` in your terminal for a refresher.) What are the naming conventions for migration files and table names?
 
@@ -114,7 +114,7 @@ Now is a great time to open up your console in the terminal and make sure everyt
 
 ```ruby
 mike = User.create(name: "Mike")
-```
+``` -->
 
 You should see the user inserted into your database. Cool! Now let's test our relationships:
 

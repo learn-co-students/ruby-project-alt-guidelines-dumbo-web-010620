@@ -1,3 +1,8 @@
 require_relative '../config/environment'
+ActiveRecord::Base.logger.level = 1
 
-puts "hello world"
+
+
+cli = CommandLineInterface.new
+choice = cli.welcome
+# puts "hello world"
